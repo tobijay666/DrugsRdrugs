@@ -10,7 +10,7 @@ services:
       /usr/src/app/startup.sh"
 
   # Frontend Development Setup
-  # Uncomment the following block for development (hot-reloading)
+  #
   # Run `docker-compose up` and access the React dev server at http://localhost:3000
   # frontend:
   #   image: node:19
@@ -24,11 +24,11 @@ services:
   #       npm start"
 
   # Frontend Production Setup
-  # Uncomment the following block for production (Nginx serving built React files)
+  #
   # Build the React app using `npm run build` before running this setup
-  frontend:
-    image: nginx
-    volumes:
-      - ./frontend/build:/usr/share/nginx/html:ro
-    ports:
-      - "81:80"
+  # frontend:
+  #   image: nginx
+  #   volumes:
+  #     - ./frontend/build:/usr/share/nginx/html:ro
+  #   ports:
+  #     - "81:80"

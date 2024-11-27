@@ -11,3 +11,8 @@
 
 - npm init -y
 - npm install --save-dev express mongoose dotenv cors body-parser nodemon
+- 27/11 - created a small script to see if everything is working
+
+## Docker
+
+- up and running.
