@@ -1,11 +1,14 @@
 import React from "react";
+import Navbar from "./components/Navbar/Navbar";
 import HelloWorld from "./components/HelloWorld";
 
 function App() {
   return (
     <div className="App">
-      <h1>DrugsRDrugs</h1>
-      <HelloWorld />
+      <Navbar />
+      <main>
+        <HelloWorld />
+      </main>
     </div>
   );
 }
