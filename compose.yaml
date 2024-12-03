@@ -5,9 +5,21 @@ services:
       - ./backend:/usr/src/app
     ports:
       - "82:9000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/DrD
+      - JWT_SECRET=your_jwt_secret_key
     command: sh -c "
       chmod +x /usr/src/app/startup.sh &&
       /usr/src/app/startup.sh"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
 
   # #Frontend Development Setup
 
@@ -32,3 +44,5 @@ services:
       - ./frontend/build:/usr/share/nginx/html:ro
     ports:
       - "81:80"
+volumes:
+  mongodata:
