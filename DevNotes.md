@@ -52,3 +52,28 @@ frontend/
 ## Navbar Created i the frontend.
 
 ## maintained proper folder structure.
+
+# 3/12
+
+## Backend Development Steps
+
+1. Set up user roles and schema:
+
+- Create a User model in the models/ folder with fields for role, username, email, password, etc.
+
+2. User registration and login routes:
+
+- Add routes in the routes/ folder for registering a user and logging in.
+- Use bcrypt for password hashing.
+
+3. JWT-based authentication:
+
+- Create a middleware in the middleware/ folder to validate tokens and extract user roles.
+
+4. Role-based access control middleware:
+
+- Develop a middleware that checks if a user has permission to access a specific route based on their role.
+
+5. Testing the endpoints:
+
+- Verify endpoints for registering users, logging in, and accessing protected routes with specific roles.
