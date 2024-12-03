@@ -44,3 +44,11 @@ frontend/
 │ ├── services/ # API call logic
 │ ├── App.js # Main App component
 │ └── index.js # React entry point
+
+# 30/11
+
+## a GitIgnore added to the backend.
+
+## Navbar Created i the frontend.
+
+## maintained proper folder structure.

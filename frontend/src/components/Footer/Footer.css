@@ -1,0 +1,25 @@
+.footer {
+	font-size: 0.9rem;
+	color: #dcdcdc;
+}
+
+.footer h5 {
+	color: #f39c12;
+	font-weight: bold;
+	margin-bottom: 1rem;
+}
+
+.footer p {
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+
+.footer-link {
+	color: #dcdcdc;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.footer-link:hover {
+	color: #f39c12;
+}
