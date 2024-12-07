@@ -77,3 +77,17 @@ frontend/
 5. Testing the endpoints:
 
 - Verify endpoints for registering users, logging in, and accessing protected routes with specific roles.
+
+## Docker - compose yaml updated
+
+## Backend mongo created
+
+## User model created.
+
+# 6/12
+
+## registertaion and the login pages are tested using POSTMAN.
+
+## Debugging the login
+
+- bcrypt causes issues {compare() - causes the issue }
