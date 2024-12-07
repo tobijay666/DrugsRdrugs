@@ -86,8 +86,38 @@ frontend/
 
 # 6/12
 
-## registertaion and the login pages are tested using POSTMAN.
+## Registration and Login Development
 
-## Debugging the login
+### Backend Development
 
-- bcrypt causes issues {compare() - causes the issue }
+1. Registration Endpoint
+
+   - Created a secure registration endpoint.
+   - Used bcrypt to hash passwords before saving them in the database.
+   - Verified the functionality using POSTMAN.
+
+2. Login Endpoint
+
+   - Created a login endpoint to authenticate users.
+   - Implemented JWT generation on successful login.
+
+3. Debugged authentication issues:
+   - Verified password hashing during registration and storage in the database.
+   - Used bcrypt.compare() to match plain text and hashed passwords.
+
+## Debugging the Login Endpoint
+
+### Issue Identified:
+
+- bcrypt.compare() returned false even for matching passwords.
+
+### Debugging Steps Taken:
+
+- Logged plain text password and hashed password during registration.
+- Verified passwords retrieved from the database during login.
+- Confirmed that passwords were being re-hashed during registration, leading to a mismatch.
+
+### Fix Applied:
+
+- Ensured password hashing happens only once during registration.
+- Verified hashed passwords remain consistent in the database and during login.
