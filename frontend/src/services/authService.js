@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL } from "api"; // Adjust based on your backend's route
+import { API_BASE_URL } from "./api"; // Adjust based on your backend's route
 
 // Signup
 export const signup = async (userData) => {

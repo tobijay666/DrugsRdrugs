@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // needs to be changed if the backend is hosted in local env.
-const API_BASE_URL = "http://localhost:82/api"; // Backend base URL
+export const API_BASE_URL = "http://localhost:82/api"; // Backend base URL
 
 export const fetchHelloMessage = async () => {
   try {
