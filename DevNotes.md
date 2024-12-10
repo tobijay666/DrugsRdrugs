@@ -121,3 +121,31 @@ frontend/
 
 - Ensured password hashing happens only once during registration.
 - Verified hashed passwords remain consistent in the database and during login.
+
+# 9/12
+
+### Login & Signup Created.
+
+# 10/12
+
+### Restructured the Folder structure
+
+- Unsatisfied with the Folder structure.
+- changed to this.
+
+frontend/
+├── src/
+│ ├── components/
+│ │ ├── Navbar/
+│ │ ├── Footer/
+│ │ ├── Auth/
+│ │ │ ├── InputField.js # Reusable input field component
+│ │ │ ├── Button.js # Reusable button component
+│ │ │ ├── Auth.css # Shared styles for Login and Signup
+│ ├── pages/
+│ │ ├── Login.js
+│ │ ├── Signup.js
+│ ├── services/
+│ │ ├── authService.js # API call logic for authentication
+│ ├── App.js # Main application component
+│ ├── index.js # React entry point
