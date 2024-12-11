@@ -134,18 +134,27 @@ frontend/
 - changed to this.
 
 frontend/
+│
 ├── src/
 │ ├── components/
-│ │ ├── Navbar/
-│ │ ├── Footer/
-│ │ ├── Auth/
-│ │ │ ├── InputField.js # Reusable input field component
-│ │ │ ├── Button.js # Reusable button component
-│ │ │ ├── Auth.css # Shared styles for Login and Signup
-│ ├── pages/
-│ │ ├── Login.js
-│ │ ├── Signup.js
-│ ├── services/
-│ │ ├── authService.js # API call logic for authentication
-│ ├── App.js # Main application component
-│ ├── index.js # React entry point
+│ │ ├── Navbar/ # Existing component
+│ │ ├── Footer/ # Existing component
+│ │ ├── Auth/ # Auth components
+│ │ │ ├── Login.js
+│ │ │ ├── Signup.js
+│ │ │ ├── Auth.css # Styles for both components
+│ │ ├── services/ # API services related to authentication
+│ │ │ ├── authService.js
+│ │ ├── routes/ # New folder for routing logic
+│ │ │ ├── RoutesComponent.js
+│ │ ├── App.js # Main application file
+│ │ ├── index.js # React entry point
+│ │
+│ ├── build/ # Output directory for React build
+│ │
+│── Dockerfile
+│── docker-compose.yml
+
+# 11/12
+
+- minor bugs fixed.
