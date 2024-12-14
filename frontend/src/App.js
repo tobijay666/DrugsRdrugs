@@ -1,12 +1,18 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import RoutesComponent from "./routes/RoutesComponent"; // Adjust to match your structure
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <RoutesComponent />
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <RoutesComponent />
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
 };
 
