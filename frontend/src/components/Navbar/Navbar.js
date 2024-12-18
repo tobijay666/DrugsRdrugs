@@ -41,6 +41,14 @@ const Navbar = () => {
                 Contact
               </a>
             </li>
+            <li className="nav-item">
+              <button
+                className="btn btn-login btn-round"
+                onClick={() => (window.location.href = "/login")}
+              >
+                Login
+              </button>
+            </li>
           </ul>
         </div>
       </div>

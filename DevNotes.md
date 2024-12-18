@@ -235,3 +235,40 @@ frontend/
 ├── services/
 │ └── homepageService.js
 └── App.js
+
+# 18/12
+
+## Things needs to be done.
+
+1. adding a link to the navbar to redirect to the login page.
+1. ii. login interface should be updated so that we can redirect to signup page as well.
+1. creating a dashboard for the pharmacist.
+1. the dash board should have the functionality of CRUD operations for Drugs. where name, dosage, and quantity are used as parameters.
+
+Updated the folder sturcture.
+src/
+├── components/
+├── pages/
+├── routes/
+├── styles/
+│ ├── colors.css
+│ ├── demo.css
+├── App.js
+├── index.js
+
+Changes Made
+Frontend:
+
+Improved error handling to display detailed backend validation messages.
+Backend:
+
+Added field-specific validations with express-validator:
+Email: Must be a valid email.
+Password: Minimum 6 characters.
+Username: Cannot be empty.
+Returned the first validation error as the response for better user feedback.
+Security Enhancements:
+
+Used bcrypt for hashing passwords.
+Limited JWT validity to 1 hour for improved security.
+Let me know if you need further adjustments or explanations!

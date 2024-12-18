@@ -23,7 +23,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+/*   
   .auth-container button {
     padding: 0.8rem;
     background-color: #007bff;
@@ -35,7 +35,7 @@
   
   .auth-container button:hover {
     background-color: #0056b3;
-  }
+  } */
   
   .auth-container p {
     color: red;

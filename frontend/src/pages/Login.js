@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { login } from "../services/authService";
-import InputField from "../components/Auth/InputField";
-import Button from "../components/Auth/Button";
 import "../components/Auth/Auth.css";
 
 const Login = () => {
@@ -28,28 +26,63 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Login</h2>
+    <div className="auth-container mt-5">
+      <div className="title">
+        <h3>Login</h3>
+        <p className="lead text-muted">
+          Enter your credentials to access your account
+        </p>
+        {message && <p className="text-danger mt-3">{message}</p>}
+      </div>
       <form onSubmit={handleSubmit}>
-        <InputField
-          type="email"
-          name="email"
-          value={credentials.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-        />
-        <InputField
-          type="password"
-          name="password"
-          value={credentials.password}
-          onChange={handleChange}
-          placeholder="Password"
-          required
-        />
-        <Button type="submit">Login</Button>
-        {message && <p>{message}</p>}
+        <div className="row mb-3">
+          <div className="col-sm-12">
+            <div className="form-group">
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="Email Address"
+                value={credentials.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-sm-12">
+            <div className="form-group">
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                placeholder="Password"
+                value={credentials.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-12 pb-3 text-center">
+            <button className="btn btn-primary btn-block" type="submit">
+              Login
+            </button>
+          </div>
+        </div>
       </form>
+      <p className="text-center text-primary">
+        Don't have an account?{" "}
+        <a
+          href="/signup"
+          class="btn btn-link"
+          onClick={() => (window.location.href = "/signup")}
+        >
+          Sign Up
+        </a>
+      </p>
     </div>
   );
 };

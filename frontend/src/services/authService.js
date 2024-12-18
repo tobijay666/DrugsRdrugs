@@ -7,7 +7,9 @@ export const signup = async (userData) => {
     const response = await axios.post(`${API_BASE_URL}/register`, userData);
     return response.data;
   } catch (error) {
-    throw error.response?.data?.message || "Signup failed";
+    // Include detailed validation error messages if present
+    const errorMessage = error.response?.data?.message || "Signup failed";
+    throw errorMessage;
   }
 };
 
@@ -17,6 +19,8 @@ export const login = async (credentials) => {
     const response = await axios.post(`${API_BASE_URL}/login`, credentials);
     return response.data;
   } catch (error) {
-    throw error.response?.data?.message || "Login failed";
+    // Include detailed validation error messages if present
+    const errorMessage = error.response?.data?.message || "Login failed";
+    throw errorMessage;
   }
 };
