@@ -158,3 +158,80 @@ frontend/
 # 11/12
 
 - minor bugs fixed.
+
+# 16/12
+
+1. Backend:
+
+- Organized into modular structure:
+- Config: db.js handles MongoDB configuration.
+- Controllers: Controller logic for handling routes, e.g., helloController.js.
+- Models: Database schema definitions (e.g., User.js).
+- Routes:
+  - authRoutes.js & authDebugRoutes.js: Handle authentication endpoints.
+  - helloRoutes.js: Example/test routes.
+- Environment Management: .env file for sensitive configuration (e.g., MONGO_URI, JWT_SECRET).
+- Main entry point: index.js with a clean setup for routes, middlewares, and configurations.
+- Dockerization:
+  - startup.sh automates dependency installation and server startup.
+
+2. Frontend:
+
+- React app structured into clear layers:
+  - Components: Reusable UI components (e.g., Navbar, Footer).
+  - Pages: Separate pages like Login, Signup.
+  - Routes: Centralized route definitions in RoutesComponent.js.
+  - Services: API calls and utility functions for consistent backend interaction.
+  - Proper routing setup using react-router-dom.
+  - Production Build:
+    - build directory for deployment-ready frontend assets.
+  - Styling:
+    - Centralized styles in App.css.
+
+4. Key Fixes and Features Implemented:
+
+- Resolved routing issues (BrowserRouter duplication errors).
+- Fixed 404 errors for static file serving in Dockerized Nginx.
+- Centralized API endpoints using environment variables.
+- Component-based design for maintainability (Navbar, Footer).
+- Backend RESTful API designed with JWT-based authentication.
+
+- Containerization:
+
+  - Multi-container Docker setup with docker-compose.yaml:
+  - Backend (Node.js + MongoDB).
+  - Frontend (Nginx serving React build).
+
+# 17/12
+
+Color Theme Note:
+The color theme for the application includes:
+
+Primary Colors: Regal deep blue (#001F54), elegant gold (#FFD700).
+Secondary Colors: Soft gray (#F4F4F4) for backgrounds, and white (#FFFFFF) for text.
+Accent Colors: Muted red (#C41E3A) for error messages or highlights, and light teal (#4ABDAC) for active links and buttons.
+
+## Home page created. Updated File structure:
+
+frontend/
+├── components/
+│ ├── Navbar/
+│ │ └── Navbar.js
+│ │ └── Navbar.css
+│ ├── Footer/
+│ │ └── Footer.js
+│ │ └── Footer.css
+│ └── Home/
+│ ├── HeroSection.js
+│ ├── WhatWeDoSection.js
+│ ├── HeroSection.css
+│ ├── WhatWeDoSection.css
+├── pages/
+│ └── Home/
+│ ├── Home.js
+│ ├── Home.css
+├── routes/
+│ └── RoutesComponent.js
+├── services/
+│ └── homepageService.js
+└── App.js
