@@ -350,3 +350,51 @@ Fixed issues related to requests not reaching the backend (route path mismatch, 
 Verified the server connection and MongoDB setup.
 Used Postman to test backend endpoints for CRUD operations.
 Ensured frontend requests align with the backend route structure.
+
+### Folder Sturcture - Updated
+
+DRUGSRDRUGS
+├── backend
+│ ├── config
+│ │ └── db.js
+│ ├── controllers
+│ │ ├── helloController.js
+│ │ └── medicationController.js
+│ ├── middleware
+│ │ └── authMiddleware.js
+│ ├── models
+│ │ ├── User.js
+│ │ └── Medication.js
+│ ├── routes
+│ │ ├── authDebugRoutes.js
+│ │ ├── authRoutes.js
+│ │ ├── helloRoutes.js
+│ │ └── medicationRoutes.js
+│ ├── node_modules
+│ ├── .env
+│ ├── .gitignore
+│ ├── index.js
+│ ├── package.json
+│ ├── package-lock.json
+│ └── startup.sh
+└── frontend
+├── public
+│ ├── index.html
+│ └── favicon.ico
+├── src
+│ ├── api
+│ │ └── medicationApi.js # Handles Axios requests to backend
+│ ├── components
+│ │ ├── MedicationForm.jsx # Form to add/update medications
+│ │ ├── MedicationList.jsx # List of medications
+│ │ └── Navbar.jsx # Navigation bar
+│ ├── pages
+│ │ └── MedicationPage.jsx # Combines form and list
+│ ├── App.js
+│ ├── index.js
+│ └── styles
+│ └── styles.css
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md
