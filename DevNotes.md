@@ -316,3 +316,37 @@ frontend/
 │ ├── components.css
 │ ├── demo.css
 └── App.js # Entry point
+
+# 23/12
+
+## 1. Backend (BE) Development
+
+Setup:
+
+Created a medicationRoutes.js file to define RESTful routes for the medication management feature.
+Created a medicationController.js file to handle the business logic for medication-related requests.
+Created a Medication.js model in the models folder to define the medication schema for MongoDB.
+
+Features Implemented:
+
+Added CRUD operations for medication management:
+
+- Create: Add a new medication.
+- Read: Get all medications or fetch a single medication by ID.
+- Update: Modify an existing medication.
+- Delete: Remove a medication from the database.
+  Configured routes to use /api/medications.
+  Debugged the 404 error and ensured routes were properly registered in index.js.
+  Added middleware for debugging incoming requests and CORS support for handling frontend requests.
+
+## 2. Frontend (FE) Integration
+
+Implemented an API call in the frontend to interact with the newly added backend medication endpoints.
+Tested the "Add New Medication" feature via the frontend to ensure proper integration.
+Fixed issues related to requests not reaching the backend (route path mismatch, port configuration, and middleware updates).
+
+## 3. Debugging & Testing
+
+Verified the server connection and MongoDB setup.
+Used Postman to test backend endpoints for CRUD operations.
+Ensured frontend requests align with the backend route structure.

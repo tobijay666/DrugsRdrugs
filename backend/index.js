@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const dbConnect = require("./config/db"); // Import the DB connection
 const authRoutes = require("./routes/authRoutes"); // Import the auth routes
 const helloRoutes = require("./routes/helloRoutes"); // Import the auth routes
+const medicationRoutes = require("./routes/medicationRoutes");
 
 dotenv.config(); // Load environment variables
 dbConnect(); // Connect to the database
@@ -20,6 +21,7 @@ app.use(cors());
 // Routes
 app.use("/api/auth", authRoutes); // Authentication routes
 app.use("/", helloRoutes); // Authentication routes
+app.use("/api/medications", medicationRoutes);
 
 // Start the server
 app.listen(PORT, () => {

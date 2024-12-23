@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../components/Auth/Auth.css";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -18,13 +15,19 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(credentials);
-      setMessage(response.message || "Login successful!");
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("role", response.role);
-      navigate("/dashboard");
+      const response = await login(credentials); // Call authService.login
+      const { token, role } = response;
+
+      // Check if token and role are defined
+      if (token && role) {
+        localStorage.setItem("token", token); // Store token in localStorage
+        localStorage.setItem("role", role); // Store role in localStorage
+        navigate("/dashboard"); // Redirect to dashboard
+      } else {
+        setMessage("Login failed: Missing token or role.");
+      }
     } catch (error) {
-      setMessage(error);
+      setMessage(error || "An error occurred during login.");
     }
   };
 
