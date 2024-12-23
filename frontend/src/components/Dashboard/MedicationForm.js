@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import "./MedicationForm.css"; // Keep your custom styles if needed
 
-const MedicationForm = ({ initialData = {}, onSubmit }) => {
+const MedicationForm = ({ initialData = {}, onSubmit, onReset }) => {
   const [medication, setMedication] = useState(initialData);
+
+  useEffect(() => {
+    setMedication(initialData); // Populate form fields when editing
+  }, [initialData]);
 
   const handleChange = (e) => {
     setMedication({ ...medication, [e.target.name]: e.target.value });
@@ -11,6 +15,8 @@ const MedicationForm = ({ initialData = {}, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(medication);
+    setMedication({}); // Clear form fields after submission
+    if (onReset) onReset(); // Notify parent to reset editing state
   };
 
   return (

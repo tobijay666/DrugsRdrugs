@@ -7,13 +7,12 @@ import {
   deleteMedication,
   updateMedication,
 } from "../../services/medicationService";
-import "./PharmacistDashboard.css";
+// import "./PharmacistDashboard.css";
 
 const PharmacistDashboard = () => {
   const [medications, setMedications] = useState([]);
   const [editingMedication, setEditingMedication] = useState(null); // Track the medication being edited
 
-  // Fetch medications on component mount
   useEffect(() => {
     const fetchMedications = async () => {
       try {
@@ -27,11 +26,10 @@ const PharmacistDashboard = () => {
     fetchMedications();
   }, []);
 
-  // Handle form submission (Add or Update)
   const handleFormSubmit = async (medication) => {
     try {
       if (editingMedication) {
-        // Update existing medication
+        // Update medication
         const updatedMedication = await updateMedication(
           editingMedication._id,
           medication
@@ -52,7 +50,6 @@ const PharmacistDashboard = () => {
     }
   };
 
-  // Handle delete medication
   const handleDelete = async (id) => {
     try {
       await deleteMedication(id);
@@ -62,9 +59,12 @@ const PharmacistDashboard = () => {
     }
   };
 
-  // Handle edit medication
   const handleEdit = (medication) => {
-    setEditingMedication(medication); // Set the medication to edit
+    setEditingMedication(medication); // Pre-fill form with selected medication
+  };
+
+  const handleFormReset = () => {
+    setEditingMedication(null); // Clear form fields after adding/updating
   };
 
   return (
@@ -76,8 +76,9 @@ const PharmacistDashboard = () => {
         onDelete={handleDelete}
       />
       <MedicationForm
+        initialData={editingMedication || {}} // Pre-fill with editingMedication or empty object
         onSubmit={handleFormSubmit}
-        initialData={editingMedication || {}} // Pass initial data for edit
+        onReset={handleFormReset} // Clear the form fields
       />
     </div>
   );

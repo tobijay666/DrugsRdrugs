@@ -398,3 +398,42 @@ DRUGSRDRUGS
 ├── package.json
 ├── package-lock.json
 └── README.md
+
+## Updates to Medication Management System
+
+### **Features Added**
+
+1. **Clear Form Fields After Adding Medication**:
+
+   - After successfully adding a new medication, the form fields are automatically cleared.
+   - This ensures the form is ready for a new entry without manual reset.
+
+2. **Pre-fill Form Fields for Editing**:
+   - When the "Edit" button is clicked in the medication table, the form fields are populated with the selected medication's details.
+   - Users can easily update the medication and save the changes.
+
+### **File-Specific Changes**
+
+#### **PharmacistDashboard.js**
+
+1. Added `editingMedication` state to track the medication being edited.
+2. Created `handleEdit` function to populate the form with selected medication details.
+3. Created `handleFormReset` function to clear the editing state after adding or updating medication.
+4. Updated `MedicationForm`:
+   - Passed `initialData` (for pre-filling) and `onReset` (to clear the form after submission).
+
+#### **MedicationForm.js**
+
+1. Updated to pre-fill form fields:
+   - Added `useEffect` to update the form fields whenever `initialData` changes.
+2. Cleared form fields after submission:
+   - Reset `medication` state to an empty object on successful form submission.
+3. Integrated `onReset` callback to notify the parent component (`PharmacistDashboard.js`) to reset editing state.
+
+### **Benefits**
+
+- Simplified user experience:
+  - No need to manually clear the form fields after adding a medication.
+  - Seamless transition between adding and editing medications.
+- Improved maintainability:
+  - Clear separation of responsibilities between the form and dashboard components.
