@@ -271,4 +271,48 @@ Security Enhancements:
 
 Used bcrypt for hashing passwords.
 Limited JWT validity to 1 hour for improved security.
-Let me know if you need further adjustments or explanations!
+
+# 22/12
+
+## Pharmacist dashboard.
+
+frontend/
+├── components/
+│ ├── Common/ # Shared reusable components
+│ │ ├── Navbar.js
+│ │ ├── Navbar.css
+│ │ ├── Footer.js
+│ │ ├── Footer.css
+│ │ ├── Button.js
+│ │ ├── Button.css
+│ └── Dashboard/ # Components specific to the dashboard
+│ ├── MedicationTable.js
+│ ├── MedicationTable.css
+│ ├── MedicationForm.js
+│ ├── MedicationForm.css
+│ └── DashboardHeader.js
+│ └── DashboardHeader.css
+├── pages/ # Full-page components
+│ ├── Home/
+│ │ ├── Home.js
+│ │ ├── Home.css
+│ ├── Dashboard/
+│ │ ├── PharmacistDashboard.js
+│ │ ├── PharmacistDashboard.css
+│ ├── Login/
+│ │ ├── Login.js
+│ │ ├── Login.css
+│ ├── Signup/
+│ ├── Signup.js
+│ ├── Signup.css
+├── routes/ # Centralized routing
+│ └── RoutesComponent.js
+├── services/ # API services
+│ ├── authService.js
+│ ├── medicationService.js
+│ └── api.js
+├── styles/ # Global styles
+│ ├── colors.css
+│ ├── components.css
+│ ├── demo.css
+└── App.js # Entry point

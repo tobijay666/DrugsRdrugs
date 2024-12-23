@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { login } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 import "../components/Auth/Auth.css";
 
 const Login = () => {
@@ -8,6 +9,7 @@ const Login = () => {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -20,6 +22,7 @@ const Login = () => {
       setMessage(response.message || "Login successful!");
       localStorage.setItem("token", response.token);
       localStorage.setItem("role", response.role);
+      navigate("/dashboard");
     } catch (error) {
       setMessage(error);
     }
