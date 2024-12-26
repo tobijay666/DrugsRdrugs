@@ -9,7 +9,14 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/tobijay666/DrugsRdrugs'
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/tobijay666/DrugsRdrugs.git',
+                        credentialsId: 'github-pat' // Use the ID for your GitHub PAT credentials
+                    ]]
+                ])
             }
         }
 
