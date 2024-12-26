@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_USERNAME = 'tobi666'
-        DOCKER_HUB_PASSWORD = 'dckr_pat_rNT9IAd05JYLwAovRwkZPHxM2pU'
+        DOCKER_HUB_PASSWORD = credentials('docker_password')
     }
 
     stages {
