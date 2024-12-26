@@ -15,6 +15,7 @@ A web application designed for pharmacists to manage medications and users to tr
 
 ### Frontend
 
+<pre>
 frontend/
 ├── components/
 ├── Auth/ # Login and Signup components
@@ -31,9 +32,11 @@ frontend/
 ├── authService.js # Authentication services
 └── medicationService.js # CRUD services for medications
 └── App.js # Main application file
+</pre>
 
 ### Backend
 
+<pre>
 backend/
 ├── controllers/ # Handles business logic for routes
 └── medicationController.js
@@ -48,6 +51,7 @@ backend/
 └── authMiddleware.js
 ├── index.js # Main entry point
 └── Dockerfile # Backend Dockerfile
+</pre>
 
 ## Installation and Setup
 
