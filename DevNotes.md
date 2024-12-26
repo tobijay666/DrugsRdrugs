@@ -437,3 +437,168 @@ DRUGSRDRUGS
   - Seamless transition between adding and editing medications.
 - Improved maintainability:
   - Clear separation of responsibilities between the form and dashboard components.
+
+# 26/12
+
+## Summary of Updates and Progress
+
+## 1. **Jenkins Pipeline Issues**
+
+- Resolved GitHub repository authentication issues by:
+  - Using a Personal Access Token (PAT) instead of username/password authentication.
+  - Verifying and updating GitHub PAT permissions.
+- Addressed SSL-related issues:
+  - Increased Git timeout in Jenkins.
+  - Added steps to disable SSL verification temporarily (not recommended for production).
+  - Suggested switching to SSH-based authentication for better stability.
+- Configured the Jenkinsfile to ensure proper Git checkout:
+  ```groovy
+  checkout([
+      $class: 'GitSCM',
+      branches: [[name: 'main']],
+      userRemoteConfigs: [[
+          url: 'https://github.com/tobijay666/DrugsRdrugs.git',
+          credentialsId: 'github-pat'
+      ]]
+  ])
+  ```
+
+## 2. **Docker Build Issues**
+
+- Resolved Docker `Dockerfile` not found errors:
+  - Verified `Dockerfile` placement in both `backend` and `frontend` directories.
+  - Created `Dockerfile` for:
+    - **Backend**:
+      ```Dockerfile
+      FROM node:19
+      WORKDIR /usr/src/app
+      COPY package*.json ./
+      RUN npm install
+      COPY . .
+      EXPOSE 9000
+      CMD ["npm", "start"]
+      ```
+    - **Frontend**:
+      ```Dockerfile
+      FROM nginx:latest
+      COPY build /usr/share/nginx/html
+      EXPOSE 80
+      CMD ["nginx", "-g", "daemon off;"]
+      ```
+- Tested `docker build` locally for both services.
+
+## 3. **Updated Jenkinsfile**
+
+- Adapted the Jenkinsfile for Windows compatibility:
+  - Replaced `sh` with `bat` commands for Docker build and push steps.
+- Added retry logic for Docker pushes to handle transient network issues:
+  ```groovy
+  stage('Push to Docker Hub') {
+      steps {
+          script {
+              retry(3) {
+                  bat 'docker push tobi666/backend'
+                  bat 'docker push tobi666/frontend'
+              }
+          }
+      }
+  }
+  ```
+- Full updated Jenkinsfile:
+  ```groovy
+  pipeline {
+      agent any
+      environment {
+          DOCKER_HUB_USERNAME = 'tobi666'
+          DOCKER_HUB_PASSWORD = credentials('docker-hub-pat')
+      }
+      stages {
+          stage('Checkout Code') {
+              steps {
+                  checkout([
+                      $class: 'GitSCM',
+                      branches: [[name: 'main']],
+                      userRemoteConfigs: [[
+                          url: 'https://github.com/tobijay666/DrugsRdrugs.git',
+                          credentialsId: 'github-pat'
+                      ]]
+                  ])
+              }
+          }
+          stage('Build Docker Images') {
+              steps {
+                  script {
+                      bat 'docker build -t tobi666/backend ./backend'
+                      bat 'docker build -t tobi666/frontend ./frontend'
+                  }
+              }
+          }
+          stage('Push to Docker Hub') {
+              steps {
+                  script {
+                      bat 'echo %DOCKER_HUB_PASSWORD% | docker login -u %DOCKER_HUB_USERNAME% --password-stdin'
+                      retry(3) {
+                          bat 'docker push tobi666/backend'
+                          bat 'docker push tobi666/frontend'
+                      }
+                  }
+              }
+          }
+      }
+      post {
+          success {
+              echo 'Pipeline completed successfully!'
+          }
+          failure {
+              echo 'Pipeline failed!'
+          }
+      }
+  }
+  ```
+
+## 4. **Debugged and Fixed Backend Pipeline Issues**
+
+- Addressed `CreateProcess error=2` by ensuring:
+  - Docker was installed and properly configured in the system PATH.
+  - Jenkins had permissions to execute Docker commands.
+
+## 5. **Improved Medication Form and Table**
+
+- Updated the frontend to reset form fields after medication creation.
+- Added functionality to populate form fields when editing medication entries.
+- Refactored the Medication services:
+  ```javascript
+  export const getMedications = async () => {
+    const response = await fetch(`${API_BASE_URL}/medications`);
+    return response.json();
+  };
+  export const addMedication = async (medication) => {
+    const response = await fetch(`${API_BASE_URL}/medications`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(medication),
+    });
+    return response.json();
+  };
+  export const deleteMedication = async (id) => {
+    await fetch(`${API_BASE_URL}/medications/${id}`, { method: "DELETE" });
+  };
+  export const updateMedication = async (id, medication) => {
+    const response = await fetch(`${API_BASE_URL}/medications/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(medication),
+    });
+    return response.json();
+  };
+  ```
+
+---
+
+## **Next Steps**
+
+1. Test the full CI/CD pipeline to confirm Docker images are pushed to Docker Hub.
+2. Verify the deployed images work as expected when pulled and run.
+3. Finalize any additional coursework requirements, such as documentation and demonstration.
+
+Let me know if you need further clarifications!
