@@ -14,7 +14,7 @@ pipeline {
                     branches: [[name: 'main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/tobijay666/DrugsRdrugs.git',
-                        credentialsId: 'github-pat' // Use the ID for your GitHub PAT credentials
+                        credentialsId: 'github-pat'
                     ]]
                 ])
             }
@@ -23,8 +23,8 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    sh 'docker build -t tobi666/backend ./backend'
-                    sh 'docker build -t tobi666/frontend ./frontend'
+                    bat 'docker build -t tobi666/backend ./backend'
+                    bat 'docker build -t tobi666/frontend ./frontend'
                 }
             }
         }
@@ -32,9 +32,9 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
-                    sh 'docker push tobi666/backend'
-                    sh 'docker push tobi666/frontend'
+                    bat 'echo %DOCKER_HUB_PASSWORD% | docker login -u %DOCKER_HUB_USERNAME% --password-stdin'
+                    bat 'docker push tobi666/backend'
+                    bat 'docker push tobi666/frontend'
                 }
             }
         }
