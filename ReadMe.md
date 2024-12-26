@@ -142,4 +142,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-Special thanks to the contributors and the community for making this project possible.
+Special thanks to ME!
