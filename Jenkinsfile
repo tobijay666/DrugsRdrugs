@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_USERNAME = 'tobi666'
-        DOCKER_HUB_PASSWORD = credentials('docker_password')
+        DOCKER_HUB_PASSWORD = 'dckr_pat_rNT9IAd05JYLwAovRwkZPHxM2pU'
     }
 
     stages {
@@ -32,7 +32,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    bat 'echo %DOCKER_HUB_PASSWORD% | docker login -u %DOCKER_HUB_USERNAME% --password-stdin'
+                    bat 'echo %DOCKER_HUB_PASSWORD% | docker login -u %DOCKER_HUB_USERNAME% --password %DOCKER_HUB_PASSWORD%'
                     bat 'docker push tobi666/backend'
                     bat 'docker push tobi666/frontend'
                 }
