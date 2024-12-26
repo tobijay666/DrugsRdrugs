@@ -32,7 +32,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    bat 'echo %DOCKER_HUB_PASSWORD% | docker login -u %DOCKER_HUB_USERNAME% --password-stdin'
+                    bat 'echo ${DOCKER_HUB_PASSWORD} | docker login -u %DOCKER_HUB_USERNAME% --password-stdin'
                     bat 'docker push tobi666/backend'
                     bat 'docker push tobi666/frontend'
                 }
