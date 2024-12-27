@@ -1,25 +1,31 @@
 .footer {
-	font-size: 0.9rem;
-	color: #dcdcdc;
+    font-size: 0.9rem;
 }
 
 .footer h5 {
-	color: #f39c12;
-	font-weight: bold;
-	margin-bottom: 1rem;
+    color: #f39c12; /* Kept your orange color for headings */
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 .footer p {
-	font-size: 0.85rem;
-	line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
-.footer-link {
-	color: #dcdcdc;
-	text-decoration: none;
-	transition: color 0.3s;
+.footer a {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link { /* Now only for hover effect */
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .footer-link:hover {
-	color: #f39c12;
+    color: #f39c12;
 }

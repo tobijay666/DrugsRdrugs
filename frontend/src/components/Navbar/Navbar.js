@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+    };
+
+    checkAuth();
+
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    setIsLoggedIn(false);
+    navigate("/"); // Navigate to home after logout
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -37,12 +60,39 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <button
-                className="btn btn-login btn-round"
-                onClick={() => (window.location.href = "/login")}
-              >
-                Login
-              </button>
+              {" "}
+              {/* Combined logic into one list item */}
+              {isLoggedIn ? (
+                <>
+                  <button
+                    className="btn btn-warning mr-2"
+                    onClick={() => navigate("/dashboard")}
+                  >
+                    Dashboard
+                  </button>
+                  <button
+                    className="btn btn-danger" // Use btn-danger for logout
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="btn btn-primary mr-2"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => navigate("/signup")}
+                  >
+                    Signup
+                  </button>
+                </>
+              )}
             </li>
           </ul>
         </div>

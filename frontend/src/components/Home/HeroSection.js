@@ -14,7 +14,7 @@ const HeroSection = () => {
                   Providing reliable insights into drug usage and patient care.
                 </h5>
                 <a
-                  href="#download"
+                  href="/login"
                   class="btn btn-outline-white btn-round page-scroll"
                 >
                   <em class="fa fa-sign-in fa-fw"></em>
