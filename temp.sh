@@ -10,3 +10,7 @@ chmod +x startup.sh up.sh
 
 # Provide a basic message
 echo "Project structure initialized successfully!"
+
+
+# Bill.phar@gmail.com
+# 123456

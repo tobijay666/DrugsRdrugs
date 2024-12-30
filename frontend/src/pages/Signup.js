@@ -107,7 +107,7 @@ import "../components/Auth/Auth.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "", // Added new state for confirm password
@@ -146,10 +146,10 @@ const Signup = () => {
             <div className="form-group">
               <input
                 type="text"
-                name="name"
+                name="username"
                 className="form-control"
-                placeholder="Name"
-                value={formData.name}
+                placeholder="Username"
+                value={formData.usernamename}
                 onChange={handleChange}
                 required
               />
@@ -198,6 +198,21 @@ const Signup = () => {
                 onChange={handleChange}
                 required
               />
+            </div>
+          </div>
+        </div>
+        <div className="row mb-3">
+          <div className="col-sm-12">
+            <div className="form-group">
+              <select
+                className="form-control"
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+              >
+                <option value="user">User</option>
+                <option value="pharmacist">Pharmacist</option>
+              </select>
             </div>
           </div>
         </div>
